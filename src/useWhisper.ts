@@ -472,13 +472,24 @@ export const useWhisper: UseWhisperHook = (config) => {
           const blob = new Blob(chunks.current, {
             type: 'audio/mpeg',
           })
-          const file = new File([blob], 'speech.mp3', {
-            type: 'audio/mpeg',
-          })
-          const text = await onWhispered(file)
-          console.log('onInterim', { text })
-          if (text) {
-            setTranscript((prev) => ({ ...prev, text }))
+          if (typeof onTranscribeCallback === 'function') {
+            const transcribed = await onTranscribeCallback(blob)
+            console.log('onTranscribe', transcribed)
+            
+            if (transcribed.text) {
+                setTranscript((prev) => ({ ...prev, text: transcribed.text }))
+            }
+          } else {
+            const file = new File([blob], 'speech.mp3', {
+              type: 'audio/mpeg',
+            })
+  
+            const text = await onWhispered(file)
+            console.log('onTranscribing', { text })
+            
+            if (text) {
+                setTranscript((prev) => ({ ...prev, text }))
+            }
           }
         }
       }

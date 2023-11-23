@@ -84,7 +84,7 @@ export const useWhisper: UseWhisperHook = (config) => {
 
   const [recording, setRecording] = useState<boolean>(false)
   const [speaking, setSpeaking] = useState<boolean>(false)
-  const [spokeAtLeastOnce, setSpokeAtLeastOnce] = useState<boolean>(false)
+  const spokeAtLeastOnce = useRef<boolean>(false)
   const [transcribing, setTranscribing] = useState<boolean>(false)
   const [transcript, setTranscript] =
     useState<UseWhisperTranscript>(defaultTranscript)
@@ -200,9 +200,6 @@ export const useWhisper: UseWhisperHook = (config) => {
         if (recordState === 'paused') {
           await recorder.current.resumeRecording()
         }
-        if (nonStop && spokeAtLeastOnce) {
-          onStartTimeout('stop')
-        }
         setRecording(true)
       }
     } catch (err) {
@@ -255,7 +252,7 @@ export const useWhisper: UseWhisperHook = (config) => {
   const onStartSpeaking = () => {
     console.log('start speaking')
     setSpeaking(true)
-    setSpokeAtLeastOnce(true)
+    spokeAtLeastOnce.current = true
     onStopTimeout('stop')
   }
 
@@ -267,7 +264,7 @@ export const useWhisper: UseWhisperHook = (config) => {
   const onStopSpeaking = () => {
     console.log('stop speaking')
     setSpeaking(false)
-    if (nonStop && spokeAtLeastOnce) {
+    if (nonStop && spokeAtLeastOnce.current) {
       onStartTimeout('stop')
     }
   }
@@ -287,7 +284,6 @@ export const useWhisper: UseWhisperHook = (config) => {
         }
         onStopTimeout('stop')
         setRecording(false)
-        setSpokeAtLeastOnce(false)
       }
     } catch (err) {
       console.error(err)
@@ -314,6 +310,7 @@ export const useWhisper: UseWhisperHook = (config) => {
         onStopStreaming()
         onStopTimeout('stop')
         setRecording(false)
+        spokeAtLeastOnce.current = false
         if (autoTranscribe) {
           await onTranscribing()
         } else {

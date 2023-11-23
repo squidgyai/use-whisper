@@ -25,7 +25,7 @@ export type UseWhisperTranscript = {
 export type UseWhisperReturn = {
   recording: boolean
   speaking: boolean
-  spokeAtLeastOnce: boolean
+  spokeAtLeastOnce: React.MutableRefObject<boolean>
   transcribing: boolean
   transcript: UseWhisperTranscript
   pauseRecording: () => Promise<void>

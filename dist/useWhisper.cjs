@@ -1,11 +1,11 @@
 'use strict';
 
-var chunkMLBBE67R_cjs = require('./chunk-MLBBE67R.cjs');
+var chunkQVP7H7LD_cjs = require('./chunk-QVP7H7LD.cjs');
 require('./chunk-57AVKP4H.cjs');
 
 
 
 Object.defineProperty(exports, 'useWhisper', {
 	enumerable: true,
-	get: function () { return chunkMLBBE67R_cjs.a; }
+	get: function () { return chunkQVP7H7LD_cjs.a; }
 });

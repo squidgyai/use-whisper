@@ -200,7 +200,7 @@ export const useWhisper: UseWhisperHook = (config) => {
         if (recordState === 'paused') {
           await recorder.current.resumeRecording()
         }
-        if (nonStop) {
+        if (nonStop && spokeAtLeastOnce) {
           onStartTimeout('stop')
         }
         setRecording(true)

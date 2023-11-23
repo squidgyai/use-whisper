@@ -84,6 +84,7 @@ export const useWhisper: UseWhisperHook = (config) => {
 
   const [recording, setRecording] = useState<boolean>(false)
   const [speaking, setSpeaking] = useState<boolean>(false)
+  const [spokeAtLeastOnce, setSpokeAtLeastOnce] = useState<boolean>(false)
   const [transcribing, setTranscribing] = useState<boolean>(false)
   const [transcript, setTranscript] =
     useState<UseWhisperTranscript>(defaultTranscript)
@@ -254,6 +255,7 @@ export const useWhisper: UseWhisperHook = (config) => {
   const onStartSpeaking = () => {
     console.log('start speaking')
     setSpeaking(true)
+    setSpokeAtLeastOnce(true)
     onStopTimeout('stop')
   }
 
@@ -265,7 +267,7 @@ export const useWhisper: UseWhisperHook = (config) => {
   const onStopSpeaking = () => {
     console.log('stop speaking')
     setSpeaking(false)
-    if (nonStop) {
+    if (nonStop && spokeAtLeastOnce) {
       onStartTimeout('stop')
     }
   }
@@ -285,6 +287,7 @@ export const useWhisper: UseWhisperHook = (config) => {
         }
         onStopTimeout('stop')
         setRecording(false)
+        setSpokeAtLeastOnce(false)
       }
     } catch (err) {
       console.error(err)
@@ -475,20 +478,20 @@ export const useWhisper: UseWhisperHook = (config) => {
           if (typeof onTranscribeCallback === 'function') {
             const transcribed = await onTranscribeCallback(blob)
             console.log('onTranscribe', transcribed)
-            
+
             if (transcribed.text) {
-                setTranscript((prev) => ({ ...prev, text: transcribed.text }))
+              setTranscript((prev) => ({ ...prev, text: transcribed.text }))
             }
           } else {
             const file = new File([blob], 'speech.mp3', {
               type: 'audio/mpeg',
             })
-  
+
             const text = await onWhispered(file)
             console.log('onTranscribing', { text })
-            
+
             if (text) {
-                setTranscript((prev) => ({ ...prev, text }))
+              setTranscript((prev) => ({ ...prev, text }))
             }
           }
         }
@@ -541,6 +544,7 @@ export const useWhisper: UseWhisperHook = (config) => {
   return {
     recording,
     speaking,
+    spokeAtLeastOnce,
     transcribing,
     transcript,
     pauseRecording,

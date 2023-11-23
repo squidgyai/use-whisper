@@ -1,0 +1,1 @@
+{"version":3,"sources":["../src/index.ts"],"names":["src_default","useWhisper"],"mappings":"sEAGA,IAAOA,EAAQC","sourcesContent":["import { useWhisper } from './useWhisper'\n\nexport { useWhisper }\nexport default useWhisper\n"]}

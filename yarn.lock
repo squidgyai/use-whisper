@@ -897,8 +897,7 @@ json-stable-stringify-without-jsonify@^1.0.1:
 
 "lamejs@github:zhuker/lamejs":
   version "1.2.1"
-  resolved "https://codeload.github.com/zhuker/lamejs/tar.gz/582bbba6a12f981b984d8fb9e1874499fed85675"
-  integrity sha512-3kh1buGueSbEzRnly5M58Ev+sED0NBaPdml+nV5u7ZFILBy+vpY7wB3CETUEpKO+koZXPsPBR5F7MAj0a62DYQ==
+  resolved "git+ssh://git@github.com/zhuker/lamejs.git#582bbba6a12f981b984d8fb9e1874499fed85675"
   dependencies:
     use-strict "1.0.1"
 

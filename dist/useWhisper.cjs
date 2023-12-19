@@ -1,13 +1,13 @@
 'use strict';
 
-var chunkMFLSJI25_cjs = require('./chunk-MFLSJI25.cjs');
+var chunkFDT2QH6U_cjs = require('./chunk-FDT2QH6U.cjs');
 require('./chunk-MMJMXXC7.cjs');
 
 
 
 Object.defineProperty(exports, 'useWhisper', {
 	enumerable: true,
-	get: function () { return chunkMFLSJI25_cjs.a; }
+	get: function () { return chunkFDT2QH6U_cjs.a; }
 });
 //# sourceMappingURL=out.js.map
 //# sourceMappingURL=useWhisper.cjs.map

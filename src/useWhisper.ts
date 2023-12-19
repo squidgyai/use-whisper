@@ -380,11 +380,11 @@ export const useWhisper: UseWhisperHook = (config) => {
         const recordState = await recorder.current.getState()
         if (recordState === 'stopped') {
           setTranscribing(true)
-          let blob = await recorder.current.getBlob()
+          const blob = await recorder.current.getBlob()
           const buffer = await blob.arrayBuffer()
           console.log({ wav: buffer.byteLength })
           const mp3 = encoder.current.encodeBuffer(new Int16Array(buffer))
-          blob = new Blob([mp3], { type: 'audio/mpeg' })
+          const mp3blob = new Blob([mp3], { type: 'audio/mpeg' })
           console.log({ blob, mp3: mp3.byteLength })
 
           if (typeof onTranscribeCallback === 'function') {
@@ -392,7 +392,9 @@ export const useWhisper: UseWhisperHook = (config) => {
             console.log('onTranscribe', transcribed)
             setTranscript(transcribed)
           } else {
-            const file = new File([blob], 'speech.mp3', { type: 'audio/mpeg' })
+            const file = new File([mp3blob], 'speech.wav', {
+              type: 'audio/wav',
+            })
             const text = await onWhispered(file)
             console.log('onTranscribing', { text })
             setTranscript({

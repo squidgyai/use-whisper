@@ -389,15 +389,15 @@ export const useWhisper: UseWhisperHook = (config) => {
           console.log({ wav: buffer.byteLength })
           const mp3 = encoder.current.encodeBuffer(new Int16Array(buffer))
           const mp3blob = new Blob([mp3], { type: 'audio/mpeg' })
-          console.log({ blob, mp3: mp3.byteLength })
+          console.log({ mp3blob, mp3: mp3.byteLength })
 
           if (typeof onTranscribeCallback === 'function') {
             const transcribed = await onTranscribeCallback(blob)
             console.log('onTranscribe', transcribed)
             setTranscript(transcribed)
           } else {
-            const file = new File([mp3blob], 'speech.wav', {
-              type: 'audio/wav',
+            const file = new File([mp3blob], 'speech.mp3', {
+              type: 'audio/mpeg',
             })
             const text = await onWhispered(file)
             console.log('onTranscribing', { text })

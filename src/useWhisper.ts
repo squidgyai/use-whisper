@@ -173,7 +173,6 @@ export const useWhisper: UseWhisperHook = (config) => {
             mimeType: 'audio/wav',
             numberOfAudioChannels: 1, // mono
             recorderType: StereoAudioRecorder,
-            sampleRate: 48000, // Sample rate = 44.1khz
             timeSlice: streaming ? timeSlice : undefined,
             type: 'audio',
             ondataavailable:
@@ -186,7 +185,7 @@ export const useWhisper: UseWhisperHook = (config) => {
         }
         if (!encoder.current) {
           const { Mp3Encoder } = await import('lamejs')
-          encoder.current = new Mp3Encoder(1, 48000, 96)
+          encoder.current = new Mp3Encoder(1, 44100, 96)
         }
         const recordState = await recorder.current.getState()
         if (recordState === 'inactive' || recordState === 'stopped') {

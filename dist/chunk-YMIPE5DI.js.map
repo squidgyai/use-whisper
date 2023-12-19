@@ -1,0 +1,1 @@
+{"version":3,"sources":["../src/configs.ts"],"names":["defaultStopTimeout","whisperApiEndpoint"],"mappings":"AAAO,IAAMA,EAAqB,IACrBC,EAAqB","sourcesContent":["export const defaultStopTimeout = 5_000\nexport const whisperApiEndpoint = 'https://api.openai.com/v1/audio/'\n"]}

@@ -2,14 +2,14 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var chunkBPCM7H2Y_cjs = require('./chunk-BPCM7H2Y.cjs');
+var chunkHX5XO4R4_cjs = require('./chunk-HX5XO4R4.cjs');
 require('./chunk-MMJMXXC7.cjs');
 
-var o=chunkBPCM7H2Y_cjs.a;
+var o=chunkHX5XO4R4_cjs.a;
 
 Object.defineProperty(exports, 'useWhisper', {
 	enumerable: true,
-	get: function () { return chunkBPCM7H2Y_cjs.a; }
+	get: function () { return chunkHX5XO4R4_cjs.a; }
 });
 exports.default = o;
 //# sourceMappingURL=out.js.map

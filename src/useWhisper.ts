@@ -84,6 +84,8 @@ export const useWhisper: UseWhisperHook = (config) => {
   const [transcript, setTranscript] =
     useState<UseWhisperTranscript>(defaultTranscript)
 
+  const audioContext = new AudioContext()
+
   /**
    * cleanup on component unmounted
    * - flush out and cleanup lamejs encoder instance
@@ -185,7 +187,7 @@ export const useWhisper: UseWhisperHook = (config) => {
         }
         if (!encoder.current) {
           const { Mp3Encoder } = await import('lamejs')
-          encoder.current = new Mp3Encoder(1, 44100, 96)
+          encoder.current = new Mp3Encoder(1, audioContext.sampleRate, 96)
         }
         const recordState = await recorder.current.getState()
         if (recordState === 'inactive' || recordState === 'stopped') {

@@ -3,4 +3,4 @@ import './types.js';
 
 
 
-export { useWhisper as default, useWhisper };
+export { useWhisper as default };

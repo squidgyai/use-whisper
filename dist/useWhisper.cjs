@@ -1,13 +1,13 @@
 'use strict';
 
-var chunkYRRFA7LN_cjs = require('./chunk-YRRFA7LN.cjs');
+var chunkWLOACCXA_cjs = require('./chunk-WLOACCXA.cjs');
 require('./chunk-MMJMXXC7.cjs');
 
 
 
 Object.defineProperty(exports, 'useWhisper', {
 	enumerable: true,
-	get: function () { return chunkYRRFA7LN_cjs.a; }
+	get: function () { return chunkWLOACCXA_cjs.a; }
 });
 //# sourceMappingURL=out.js.map
 //# sourceMappingURL=useWhisper.cjs.map

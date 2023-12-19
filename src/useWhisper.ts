@@ -4,7 +4,7 @@ import type { Harker } from 'hark'
 import type { Encoder } from 'lamejs'
 import { useEffect, useRef, useState } from 'react'
 import type { Options, RecordRTCPromisesHandler } from 'recordrtc'
-import { defaultStopTimeout, whisperApiEndpoint } from './configs'
+import { defaultStopTimeout, whisperApiEndpoint } from './configs.js'
 import {
   UseWhisperConfig,
   UseWhisperHook,

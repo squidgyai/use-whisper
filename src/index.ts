@@ -1,4 +1,3 @@
-import { useWhisper } from './useWhisper'
+import { useWhisper } from './useWhisper.js'
 
-export { useWhisper }
 export default useWhisper

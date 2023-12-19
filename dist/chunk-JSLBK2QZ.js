@@ -6,4 +6,4 @@ var te={apiKey:"",autoStart:!1,autoTranscribe:!0,mode:"transcriptions",nonStop:!
 
 export { pe as a };
 //# sourceMappingURL=out.js.map
-//# sourceMappingURL=chunk-SXGPRC2H.js.map
+//# sourceMappingURL=chunk-JSLBK2QZ.js.map

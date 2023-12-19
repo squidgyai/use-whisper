@@ -1,13 +1,13 @@
 'use strict';
 
-var chunkB6KWXPRX_cjs = require('./chunk-B6KWXPRX.cjs');
+var chunkMFLSJI25_cjs = require('./chunk-MFLSJI25.cjs');
 require('./chunk-MMJMXXC7.cjs');
 
 
 
 Object.defineProperty(exports, 'useWhisper', {
 	enumerable: true,
-	get: function () { return chunkB6KWXPRX_cjs.a; }
+	get: function () { return chunkMFLSJI25_cjs.a; }
 });
 //# sourceMappingURL=out.js.map
 //# sourceMappingURL=useWhisper.cjs.map

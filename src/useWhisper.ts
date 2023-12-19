@@ -180,6 +180,10 @@ export const useWhisper: UseWhisperHook = (config) => {
             ondataavailable:
               autoTranscribe && streaming ? onDataAvailable : undefined,
           }
+          console.log(
+            'Setting up recorder with sample rate',
+            audioContext.sampleRate
+          )
           recorder.current = new RecordRTCPromisesHandler(
             stream.current,
             recorderConfig

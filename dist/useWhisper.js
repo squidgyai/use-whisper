@@ -1,4 +1,4 @@
-export { a as useWhisper } from './chunk-PRFYRXPZ.js';
+export { a as useWhisper } from './chunk-SXGPRC2H.js';
 import './chunk-YMIPE5DI.js';
 //# sourceMappingURL=out.js.map
 //# sourceMappingURL=useWhisper.js.map

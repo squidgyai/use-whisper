@@ -175,6 +175,7 @@ export const useWhisper: UseWhisperHook = (config) => {
             mimeType: 'audio/wav',
             numberOfAudioChannels: 1, // mono
             recorderType: StereoAudioRecorder,
+            sampleRate: audioContext.sampleRate,
             timeSlice: streaming ? timeSlice : undefined,
             type: 'audio',
             ondataavailable:

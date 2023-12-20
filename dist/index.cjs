@@ -1,9 +1,9 @@
 'use strict';
 
-var chunkLJ55BBWO_cjs = require('./chunk-LJ55BBWO.cjs');
+var chunkBG4S622N_cjs = require('./chunk-BG4S622N.cjs');
 require('./chunk-MMJMXXC7.cjs');
 
-var o=chunkLJ55BBWO_cjs.a;
+var o=chunkBG4S622N_cjs.a;
 
 module.exports = o;
 //# sourceMappingURL=out.js.map

@@ -84,8 +84,6 @@ export const useWhisper: UseWhisperHook = (config) => {
   const [transcript, setTranscript] =
     useState<UseWhisperTranscript>(defaultTranscript)
 
-  const audioContext = new AudioContext()
-
   /**
    * cleanup on component unmounted
    * - flush out and cleanup lamejs encoder instance
@@ -175,15 +173,11 @@ export const useWhisper: UseWhisperHook = (config) => {
             mimeType: 'audio/wav',
             numberOfAudioChannels: 1, // mono
             recorderType: StereoAudioRecorder,
-            sampleRate: audioContext.sampleRate,
+            desiredSampRate: 16000,
             type: 'audio',
             ondataavailable:
               autoTranscribe && streaming ? onDataAvailable : undefined,
           }
-          console.log(
-            'Setting up recorder with sample rate',
-            audioContext.sampleRate
-          )
           recorder.current = new RecordRTCPromisesHandler(
             stream.current,
             recorderConfig
@@ -191,7 +185,7 @@ export const useWhisper: UseWhisperHook = (config) => {
         }
         if (!encoder.current) {
           const { Mp3Encoder } = await import('lamejs')
-          encoder.current = new Mp3Encoder(1, audioContext.sampleRate, 96)
+          encoder.current = new Mp3Encoder(1, 16000, 96)
         }
         const recordState = await recorder.current.getState()
         if (recordState === 'inactive' || recordState === 'stopped') {
@@ -390,6 +384,7 @@ export const useWhisper: UseWhisperHook = (config) => {
           const mp3 = encoder.current.encodeBuffer(new Int16Array(buffer))
           const mp3blob = new Blob([mp3], { type: 'audio/mpeg' })
           console.log({ mp3blob, mp3: mp3.byteLength })
+          console.log('HELLO')
 
           if (typeof onTranscribeCallback === 'function') {
             const transcribed = await onTranscribeCallback(blob)
